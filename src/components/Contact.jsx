@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const ref = useRef(null);
-  
+  const formRef = useRef(null);
+
   // React Form State tracking
   const [formData, setFormData] = useState({
     firstName: '',
@@ -12,6 +14,8 @@ const Contact = () => {
     message: '',
     permission: false
   });
+
+  const [status, setStatus] = useState('idle'); // idle | sending | success | error
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -30,7 +34,7 @@ const Contact = () => {
     }));
   };
 
-  // Handle form submission logic
+  // Handle form submission logic — sends the message straight to Mohammed's inbox via EmailJS
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -39,10 +43,23 @@ const Contact = () => {
       return;
     }
 
-    console.log("Form Data Submitted Successfully:", formData);
-    alert(`Thanks ${formData.firstName}! Message captured successfully.`);
-    
-    setFormData({ firstName: '', lastName: '', email: '', message: '', permission: false });
+    setStatus('sending');
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
+      )
+      .then(() => {
+        setStatus('success');
+        setFormData({ firstName: '', lastName: '', email: '', message: '', permission: false });
+      })
+      .catch((err) => {
+        console.error('EmailJS send failed:', err);
+        setStatus('error');
+      });
   };
 
   return (
@@ -86,40 +103,43 @@ const Contact = () => {
             </span>
           </div>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-12 md:gap-16 w-full">
+          <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-12 md:gap-16 w-full">
             <div className="flex flex-col md:flex-row gap-12 md:gap-20 w-full">
-              
+
               {/* Left Column */}
               <div className="flex-1 flex flex-col gap-10">
                 <div className="relative">
-                  <input 
-                    type="text" 
-                    id="firstName" 
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
                     value={formData.firstName}
                     onChange={handleChange}
-                    placeholder="First Name" 
+                    placeholder="First Name"
                     required
                     className="w-full bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-red-600 transition-colors placeholder-white/40 font-medium rounded-none text-white"
                   />
                 </div>
                 <div className="relative">
-                  <input 
-                    type="text" 
-                    id="lastName" 
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
                     value={formData.lastName}
                     onChange={handleChange}
-                    placeholder="Last Name" 
+                    placeholder="Last Name"
                     required
                     className="w-full bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-red-600 transition-colors placeholder-white/40 font-medium rounded-none text-white"
                   />
                 </div>
                 <div className="relative">
-                  <input 
-                    type="email" 
-                    id="email" 
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="Email Address" 
+                    placeholder="Email Address"
                     required
                     className="w-full bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-red-600 transition-colors placeholder-white/40 font-medium rounded-none text-white"
                   />
@@ -129,11 +149,12 @@ const Contact = () => {
               {/* Right Column */}
               <div className="flex-1 flex flex-col">
                 <div className="relative h-full flex flex-col">
-                  <textarea 
-                    id="message" 
+                  <textarea
+                    id="message"
+                    name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Type your message here..." 
+                    placeholder="Type your message here..."
                     required
                     className="w-full h-full min-h-[140px] bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-red-600 transition-colors placeholder-white/40 font-medium resize-none rounded-none text-white"
                   ></textarea>
@@ -145,12 +166,13 @@ const Contact = () => {
             <div className="flex flex-col md:flex-row gap-12 mt-4 pt-6 border-t border-white/10">
               {/* Left text */}
               <div className="flex-1 flex items-start gap-4 text-sm font-light text-white/70">
-                <input 
-                  type="checkbox" 
-                  id="permission" 
+                <input
+                  type="checkbox"
+                  id="permission"
+                  name="permission"
                   checked={formData.permission}
                   onChange={handleChange}
-                  className="mt-1 w-4 h-4 rounded-sm border-white/30 bg-transparent text-red-600 focus:ring-0 focus:ring-offset-0 cursor-pointer" 
+                  className="mt-1 w-4 h-4 rounded-sm border-white/30 bg-transparent text-red-600 focus:ring-0 focus:ring-offset-0 cursor-pointer"
                   style={{ accentColor: "#E50914" }}
                 />
                 <label htmlFor="permission" className="cursor-pointer max-w-[280px] leading-snug">
@@ -167,17 +189,25 @@ const Contact = () => {
                   <p className="max-w-[250px] leading-relaxed">
                     Ready to start a project or collaboration? Send a direct signal.
                   </p>
-                  
-                  <button 
-                    type="submit" 
-                    className="px-8 py-3.5 rounded bg-red-600 text-white font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:bg-red-700 transition-all duration-300 group whitespace-nowrap shadow-[0_0_20px_rgba(229,9,20,0.6)] hover:scale-105"
+
+                  <button
+                    type="submit"
+                    disabled={status === 'sending'}
+                    className="px-8 py-3.5 rounded bg-red-600 text-white font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:bg-red-700 transition-all duration-300 group whitespace-nowrap shadow-[0_0_20px_rgba(229,9,20,0.6)] hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
-                    Send Message
+                    {status === 'sending' ? 'Sending...' : 'Send Message'}
                     <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </button>
                 </div>
+
+                {status === 'success' && (
+                  <p className="text-green-500 text-xs font-mono">Message sent successfully! I'll get back to you soon.</p>
+                )}
+                {status === 'error' && (
+                  <p className="text-red-500 text-xs font-mono">Something went wrong. Please try again or email me directly.</p>
+                )}
               </div>
             </div>
           </form>

@@ -7,30 +7,30 @@ gsap.registerPlugin(ScrollTrigger);
 const expertiseData = [
   {
     number: "01",
-    title: "Frontend Development",
-    text: "Crafting responsive, high-fidelity user interfaces with React, modern JavaScript, Tailwind CSS, and buttery smooth GSAP motion interactions.",
-    tag: "UI / UX & INTERACTION",
+    title: "Mobile App Development",
+    text: "Building modern Flutter applications with Dart, responsive UI, state management, local caching, and real-time communication for production-ready products.",
+    tag: "FLUTTER & DART",
     gradient: "from-[#1f0a0c] via-[#121212] to-[#0a0a0a]"
   },
   {
     number: "02",
-    title: "Backend Development",
-    text: "Architecting secure REST APIs, enterprise authentication pipelines, and scalable database schemas across PostgreSQL and MongoDB.",
-    tag: "API & ARCHITECTURE",
+    title: "Backend Integration",
+    text: "Connecting applications with REST APIs, .NET services, SQL Server databases, authentication flows, and third-party business systems.",
+    tag: "API & INTEGRATION",
     gradient: "from-[#1a0809] via-[#111111] to-[#090909]"
   },
   {
     number: "03",
-    title: "AI & Machine Learning",
-    text: "Integrating production-grade LLM workflows, predictive machine learning pipelines, and computer vision systems backed by AWS AI certification.",
-    tag: "INTELLIGENCE & ML",
+    title: "AI-Powered Applications",
+    text: "Integrating AI APIs, chatbot features, and intelligent automation into mobile applications to deliver smarter, more automated user experiences.",
+    tag: "AI & AUTOMATION",
     gradient: "from-[#220a0d] via-[#131313] to-[#0a0a0a]"
   },
   {
     number: "04",
-    title: "Cloud & Deployment",
-    text: "Deploying resilient, containerized multi-tenant services using Docker, GitHub Actions CI/CD workflows, and optimized cloud hosting.",
-    tag: "DEVOPS & CLOUD",
+    title: "Software Architecture",
+    text: "Structuring applications using Clean Architecture, MVVM, and feature-first, modular designs that stay maintainable, scalable, and testable.",
+    tag: "ARCHITECTURE & DESIGN",
     gradient: "from-[#1d090b] via-[#101010] to-[#080808]"
   }
 ];
@@ -115,7 +115,7 @@ const Expertise = () => {
             </h2>
           </div>
           <p className="text-white/60 text-xs md:text-sm font-light leading-relaxed max-w-xs">
-            Merging full-stack engineering, scalable microservices, and AI integrations into production-ready platforms.
+            Merging Flutter mobile engineering, backend integration, and AI-powered features into production-ready applications.
           </p>
         </div>
 

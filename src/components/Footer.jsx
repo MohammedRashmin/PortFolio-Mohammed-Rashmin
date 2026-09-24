@@ -12,7 +12,7 @@ const Footer = () => {
               RASHMIN<span className="w-1.5 h-1.5 rounded-full bg-white inline-block"></span>
             </div>
             <p className="text-xs font-mono text-white/50 tracking-widest uppercase">
-              // NETFLIX DEVELOPER SERIES &bull; SEASON 2026
+              // ASSOCIATE SOFTWARE ENGINEER &bull; CAPPS
             </p>
           </div>
 
@@ -30,41 +30,37 @@ const Footer = () => {
         {/* Middle Section: Socials & External Profiles */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-xs font-mono text-white/60">
           <div className="flex items-center gap-6">
-            <a 
-              href="https://github.com" 
-              target="_blank" 
+            <a
+              href="mailto:mrrasmi01@gmail.com"
+              className="hover:text-red-500 transition-colors uppercase tracking-wider"
+            >
+              Email //
+            </a>
+            <a
+              href="tel:+94767579290"
+              className="hover:text-red-500 transition-colors uppercase tracking-wider"
+            >
+              Phone //
+            </a>
+            <a
+              href="https://github.com"
+              target="_blank"
               rel="noopener noreferrer"
               className="hover:text-red-500 transition-colors uppercase tracking-wider"
             >
               GitHub //
             </a>
-            <a 
-              href="https://linkedin.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:text-red-500 transition-colors uppercase tracking-wider"
-            >
-              LinkedIn //
-            </a>
-            <a 
-              href="https://leetcode.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:text-red-500 transition-colors uppercase tracking-wider"
-            >
-              LeetCode //
-            </a>
           </div>
 
           <div className="text-white/40 tracking-widest uppercase">
-            LOCATION: ANDHRA PRADESH, IN
+            LOCATION: ANURADHAPURA, SRI LANKA
           </div>
         </div>
 
         {/* Bottom Copyright & Cinematic Tagline */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-white/5 text-[11px] font-mono text-white/40 uppercase tracking-widest">
           <p>&copy; {new Date().getFullYear()} Mohammed Rashmin. All Rights Reserved.</p>
-          <p className="text-red-500/80">STREAMING WORLDWIDE &bull; BUILT WITH REACT & GSAP</p>
+          <p className="text-red-500/80">BUILT WITH REACT, GSAP & FLUTTER PASSION</p>
         </div>
 
       </div>

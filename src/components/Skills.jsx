@@ -5,41 +5,41 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const skillCategories = [
-  { 
-    title: 'Frontend Engineering', 
-    desc: 'Crafting responsive and interactive user interfaces using React, JavaScript, HTML5, CSS3, and Tailwind CSS.', 
-    tag: 'UI / INTERACTION',
-    skills: ['React', 'JavaScript', 'Tailwind CSS', 'HTML5', 'CSS3'] 
+  {
+    title: 'Mobile Development',
+    desc: 'Building modern Flutter applications with responsive UI, state management, authentication, notifications, and payment integration.',
+    tag: 'FLUTTER & DART',
+    skills: ['Flutter', 'Dart', 'Riverpod', 'GoRouter', 'Hive']
   },
-  { 
-    title: 'Backend & Databases', 
-    desc: 'Building secure REST APIs, authentication flows, server-side applications, and high-performance database architectures.', 
+  {
+    title: 'Frontend Development',
+    desc: 'Building responsive user interfaces and component-based web applications with Angular and modern HTML.',
+    tag: 'WEB UI',
+    skills: ['Angular', 'HTML', 'Responsive UI', 'REST Consumption', 'Forms']
+  },
+  {
+    title: 'Backend Development',
+    desc: 'Building REST APIs, backend services, and business logic using C#, .NET, and Entity Framework.',
     tag: 'ARCHITECTURE',
-    skills: ['Node.js', 'Express', 'PostgreSQL', 'MongoDB', 'DQL'] 
+    skills: ['C#', '.NET', 'REST APIs', 'Entity Framework', 'Auth']
   },
-  { 
-    title: 'AI & Machine Learning', 
-    desc: 'Developing intelligent applications leveraging NLP, generative AI workflows, computer vision, and LLM systems.', 
+  {
+    title: 'AI & Intelligent Apps',
+    desc: 'Integrating AI APIs, chatbots, and smart automation into mobile and web applications.',
     tag: 'INTELLIGENCE',
-    skills: ['NLP', 'Generative AI', 'Computer Vision', 'LLMs', 'AWS AI'] 
+    skills: ['AI API Integration', 'Chatbots', 'Automation', 'AI Workflows', 'SignalR']
   },
-  { 
-    title: 'Cloud & DevOps', 
-    desc: 'Deploying and scaling production-grade applications using Docker containers, GitHub Actions, and CI/CD pipelines.', 
-    tag: 'INFRASTRUCTURE',
-    skills: ['Docker', 'GitHub', 'CI/CD Pipelines', 'Render', 'Docker Hub'] 
+  {
+    title: 'Databases',
+    desc: 'Working with relational databases, local caching, and database-driven application design.',
+    tag: 'DATA',
+    skills: ['SQL Server', 'Entity Framework', 'Hive', 'Secure Storage', 'Caching']
   },
-  { 
-    title: 'Algorithmic Problem Solving', 
-    desc: 'Optimizing data structures and solving complex algorithmic challenges across competitive programming platforms.', 
-    tag: 'COMPETITIVE',
-    skills: ['Data Structures', 'Algorithms', 'LeetCode', 'CodeChef', 'GFG'] 
-  },
-  { 
-    title: 'Tools & Ecosystem', 
-    desc: 'Equipped with industry-grade instruments for version control, productivity extensions, and workflow management.', 
-    tag: 'PRODUCTIVITY',
-    skills: ['Git', 'Chrome APIs', 'Adobe Express', 'Google Cloud', 'VS Code'] 
+  {
+    title: 'Software Engineering',
+    desc: 'Structuring maintainable, scalable applications using Clean Architecture, MVVM, and feature-first design.',
+    tag: 'ARCHITECTURE',
+    skills: ['Clean Architecture', 'MVVM', 'Modular Design', 'Debugging', 'Testing']
   },
 ];
 

@@ -4,69 +4,69 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Authentic Project Data based on your engineering portfolio
+// Authentic Project Data based on Mohammed Rashmin's engineering portfolio
 const projectsData = [
   {
-    title: "Notice Hub",
-    category: "Full-Stack Architecture",
-    description: "Consolidates university announcements and streamlines real-time student communication with high uptime.",
-    tags: ["React", "Node.js", "Express", "MongoDB"],
+    title: "OneNex",
+    category: "Hospitality Management Platform",
+    description: "Multi-tenant business platform expanding from restaurant operations to a full hotel & restaurant management ecosystem.",
+    tags: ["Flutter", "Dart", "Riverpod", "SignalR"],
     match: "99%",
     episode: "S01 E01"
   },
   {
-    title: "Multi-Tenant SaaS Platform",
-    category: "Cloud & Distributed Systems",
-    description: "Containerized enterprise SaaS featuring strict database isolation and granular role-based access control.",
-    tags: ["Docker", "PostgreSQL", "Node.js", "Express"],
+    title: "Eezhoviyam",
+    category: "Fine Art Gallery Website",
+    description: "A digital platform for a fine art gallery, presenting artwork through a visually attractive, brand-driven experience.",
+    tags: ["Web Design", "Responsive UI", "HTML", "Branding"],
     match: "98%",
     episode: "S01 E02"
   },
   {
-    title: "Payment Gateway System",
-    category: "Fintech Architecture",
-    description: "Simulates complex transaction state management, webhook verification, and multi-method processing.",
-    tags: ["JavaScript", "PostgreSQL", "REST APIs", "Docker"],
+    title: "FixMate",
+    category: "Skilled Service Marketplace",
+    description: "A startup concept connecting customers with skilled service providers via customer, worker, and admin applications.",
+    tags: ["C#", ".NET", "SQL Server", "Clean Architecture"],
     match: "97%",
     episode: "S01 E03"
   },
   {
-    title: "Productivity Suite Extension",
-    category: "Client-Side Engineering",
-    description: "Custom Chrome extension built with Chrome APIs and advanced JavaScript for task automation and management.",
-    tags: ["JavaScript", "Chrome APIs", "Tailwind CSS", "HTML5"],
-    match: "99%",
+    title: "AI-Powered App Features",
+    category: "Artificial Intelligence",
+    description: "AI API integrations and chatbot-driven automation built into mobile application workflows.",
+    tags: ["AI Integration", "Chatbots", "Flutter", "Automation"],
+    match: "96%",
     episode: "S01 E04"
   },
   {
-    title: "AI & ML Diagnostic Engine",
-    category: "Artificial Intelligence",
-    description: "Intelligent data processing pipeline leveraging machine learning models and NLP workflows.",
-    tags: ["Python", "Machine Learning", "NLP", "AWS"],
-    match: "96%",
+    title: "Payment Gateway Integration",
+    category: "Fintech & Mobile Payments",
+    description: "Payment workflow integration handling transaction status, API communication, and user-facing payment flows.",
+    tags: ["Flutter", "REST APIs", "Payments", "Dart"],
+    match: "97%",
     episode: "S01 E05"
   },
   {
-    title: "Algorithmic Problem Solver",
-    category: "Competitive Programming",
-    description: "Optimized data structure solutions across LeetCode, CodeChef, and GeeksforGeeks platforms.",
-    tags: ["Data Structures", "Algorithms", "C++", "JavaScript"],
-    match: "99%",
+    title: "Business Web Applications",
+    category: "Full-Stack Development",
+    description: "Milestone-based web applications built during professional training, with responsive UI and backend integration.",
+    tags: ["Angular", "C#", ".NET", "SQL"],
+    match: "98%",
     episode: "S01 E06"
   },
   {
-    title: "Portfolio Cinematics v2.6",
-    category: "UI/UX & Animation",
-    description: "Award-winning dark studio interactive portfolio featuring GSAP physics and responsive layouts.",
-    tags: ["React", "GSAP", "Tailwind CSS", "Framer Motion"],
-    match: "100%",
+    title: "Freelance Client Projects",
+    category: "Websites & Desktop Apps",
+    description: "Independent projects spanning business websites, static pages, desktop applications, and database-driven solutions.",
+    tags: ["C#", "HTML", "SQL", "APIs"],
+    match: "96%",
     episode: "S01 E07"
   },
   {
-    title: "Cloud CI/CD Pipeline",
-    category: "DevOps & Infrastructure",
-    description: "Automated deployment workflows using GitHub Actions and containerized Docker environments.",
-    tags: ["Docker", "GitHub Actions", "CI/CD", "Render"],
+    title: "Aromasking",
+    category: "E-Commerce Web Platform",
+    description: "An e-commerce website built for a UK client, delivering a complete online storefront and shopping experience.",
+    tags: ["E-Commerce", "Web Development", "UI/UX", "Client Project"],
     match: "98%",
     episode: "S01 E08"
   }
