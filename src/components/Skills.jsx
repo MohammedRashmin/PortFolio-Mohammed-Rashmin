@@ -179,7 +179,7 @@ const Skills = () => {
         <div 
           key={i}
           ref={el => bgRefs.current[i] = el}
-          className="absolute inset-0 z-0 pointer-events-none opacity-0 bg-gradient-to-tr from-black via-[#140203] to-black"
+          className="absolute inset-0 z-0 pointer-events-none opacity-0 bg-gradient-to-tr from-black via-[#030214] to-black"
         />
       ))}
 
@@ -191,7 +191,7 @@ const Skills = () => {
             ref={el => textRefs.current[i] = el}
             className="absolute text-[22vw] md:text-[18vw] font-black uppercase text-transparent leading-none tracking-tighter mix-blend-overlay"
             style={{ 
-               WebkitTextStroke: `2px ${i % 2 === 0 ? 'rgba(229,9,20,0.3)' : 'rgba(255,255,255,0.15)'}`,
+               WebkitTextStroke: `2px ${i % 2 === 0 ? 'rgba(6,182,212,0.3)' : 'rgba(255,255,255,0.15)'}`,
                opacity: 0 
             }}
           >
@@ -202,21 +202,21 @@ const Skills = () => {
 
       {/* Carousel Container */}
       <div 
-        className="relative w-full h-full flex md:items-center md:justify-center z-10 md:[transform-style:preserve-3d] overflow-x-auto overflow-y-hidden md:overflow-visible snap-x snap-mandatory scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] items-center px-[10vw] md:px-0 gap-4 md:gap-0 touch-pan-x"
+        className="relative w-full h-full flex md:items-center md:justify-center z-10 md:[transform-style:preserve-3d] overflow-x-auto overflow-y-hidden md:overflow-visible snap-x snap-mandatory scrollbar-hide [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] items-center px-[10vw] md:px-0 gap-4 md:gap-0"
         onScroll={handleScroll}
       >
         {skillCategories.map((category, i) => (
           <div 
             key={i}
             ref={el => cardsRef.current[i] = el}
-            className="md:absolute relative shrink-0 snap-center w-[82vw] sm:w-[360px] md:w-[440px] h-[460px] md:h-[540px] rounded-[32px] p-8 md:p-10 bg-[#141414]/95 backdrop-blur-2xl border border-white/15 flex flex-col justify-between overflow-hidden group shadow-[0_30px_60px_rgba(0,0,0,0.9)] hover:border-red-600/80 transition-colors duration-500"
+            className="md:absolute relative shrink-0 snap-center w-[82vw] sm:w-[360px] md:w-[440px] h-[460px] md:h-[540px] rounded-[32px] p-8 md:p-10 bg-[#141414]/95 backdrop-blur-2xl border border-white/15 flex flex-col justify-between overflow-hidden group shadow-[0_30px_60px_rgba(0,0,0,0.9)] hover:border-cyan-500/80 transition-colors duration-500"
           >
             {/* Inner Red Glossy Reflection */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-red-600/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20" />
             
             {/* Top Card Metadata */}
             <div className="flex items-center justify-between relative z-10">
-              <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-red-500 bg-red-600/10 px-3 py-1 rounded border border-red-600/20">
+              <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded border border-cyan-500/20">
                 {category.tag}
               </span>
               <span className="text-xs font-mono text-white/40">
@@ -226,7 +226,7 @@ const Skills = () => {
 
             {/* Middle Title & Description */}
             <div className="space-y-4 relative z-10 my-auto">
-              <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight group-hover:text-red-500 transition-colors duration-300">
+              <h3 className="text-3xl md:text-4xl font-black text-white tracking-tight group-hover:text-cyan-400 transition-colors duration-300">
                 {category.title}
               </h3>
               <p className="text-sm md:text-base text-white/70 font-light leading-relaxed">
@@ -239,7 +239,7 @@ const Skills = () => {
               {category.skills.map((skill, sIdx) => (
                 <span 
                   key={sIdx}
-                  className="text-xs font-mono text-white/80 bg-white/5 border border-white/10 px-3 py-1 rounded group-hover:border-red-600/30 transition-colors"
+                  className="text-xs font-mono text-white/80 bg-white/5 border border-white/10 px-3 py-1 rounded group-hover:border-cyan-500/30 transition-colors"
                 >
                   {skill}
                 </span>
@@ -247,7 +247,7 @@ const Skills = () => {
             </div>
 
             {/* Bottom Glow Accent */}
-            <div className="absolute bottom-4 right-4 w-2 h-2 rounded-full bg-red-600 group-hover:shadow-[0_0_15px_#E50914] transition-all" />
+            <div className="absolute bottom-4 right-4 w-2 h-2 rounded-full bg-cyan-500 group-hover:shadow-[0_0_15px_#06B6D4] transition-all" />
           </div>
         ))}
       </div>

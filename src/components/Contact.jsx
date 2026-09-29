@@ -66,7 +66,7 @@ const Contact = () => {
     <section ref={ref} id="contact" className="bg-[#0b0b0b] w-full min-h-screen relative overflow-hidden flex items-end pt-32 pb-0 border-t border-white/10 select-none">
       
       {/* Background Cinematic Red Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-red-600/15 rounded-full blur-[160px] pointer-events-none z-0"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/15 rounded-full blur-[160px] pointer-events-none z-0"></div>
 
       {/* Huge Background Parallax Netflix Watermark Text */}
       <motion.div 
@@ -74,7 +74,7 @@ const Contact = () => {
         className="absolute top-0 left-0 w-full h-full flex flex-col justify-start items-center overflow-hidden pointer-events-none z-0 pt-16 md:pt-12 opacity-10"
       >
         <h1 
-          className="text-[25vw] leading-[0.75] font-black text-red-600 uppercase tracking-tighter select-none scale-y-[1.6] origin-top"
+          className="text-[25vw] leading-[0.75] font-black text-cyan-500 uppercase tracking-tighter select-none scale-y-[1.6] origin-top"
           style={{ fontFamily: "'Bebas Neue', 'Impact', sans-serif" }}
         >
           CONTACT
@@ -91,11 +91,11 @@ const Contact = () => {
           className="bg-[#141414]/95 backdrop-blur-2xl border-t border-l border-white/15 w-full md:w-[90%] lg:w-[82%] p-8 md:p-16 text-white flex flex-col justify-between rounded-tl-[3rem] shadow-[0_-25px_60px_rgba(0,0,0,0.9)] relative overflow-hidden"
         >
           {/* Subtle internal top crimson highlight glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent opacity-90"></div>
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-90"></div>
 
           <div className="flex items-center justify-between mb-12 md:mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-red-600/10 border border-red-600/30 text-xs font-mono uppercase tracking-widest text-red-500">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping"></span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-cyan-500/10 border border-cyan-500/30 text-xs font-mono uppercase tracking-widest text-cyan-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-ping"></span>
               <span>EPISODE 04 // GET IN TOUCH</span>
             </div>
             <span className="text-xs font-mono text-white/40 tracking-wider hidden md:block">
@@ -117,7 +117,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="First Name"
                     required
-                    className="w-full bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-red-600 transition-colors placeholder-white/40 font-medium rounded-none text-white"
+                    className="w-full bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-cyan-500 transition-colors placeholder-white/40 font-medium rounded-none text-white"
                   />
                 </div>
                 <div className="relative">
@@ -129,7 +129,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="Last Name"
                     required
-                    className="w-full bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-red-600 transition-colors placeholder-white/40 font-medium rounded-none text-white"
+                    className="w-full bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-cyan-500 transition-colors placeholder-white/40 font-medium rounded-none text-white"
                   />
                 </div>
                 <div className="relative">
@@ -141,7 +141,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="Email Address"
                     required
-                    className="w-full bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-red-600 transition-colors placeholder-white/40 font-medium rounded-none text-white"
+                    className="w-full bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-cyan-500 transition-colors placeholder-white/40 font-medium rounded-none text-white"
                   />
                 </div>
               </div>
@@ -156,7 +156,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="Type your message here..."
                     required
-                    className="w-full h-full min-h-[140px] bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-red-600 transition-colors placeholder-white/40 font-medium resize-none rounded-none text-white"
+                    className="w-full h-full min-h-[140px] bg-transparent border-b border-white/20 pb-3 text-lg focus:outline-none focus:border-cyan-500 transition-colors placeholder-white/40 font-medium resize-none rounded-none text-white"
                   ></textarea>
                 </div>
               </div>
@@ -172,8 +172,8 @@ const Contact = () => {
                   name="permission"
                   checked={formData.permission}
                   onChange={handleChange}
-                  className="mt-1 w-4 h-4 rounded-sm border-white/30 bg-transparent text-red-600 focus:ring-0 focus:ring-offset-0 cursor-pointer"
-                  style={{ accentColor: "#E50914" }}
+                  className="mt-1 w-4 h-4 rounded-sm border-white/30 bg-transparent text-cyan-500 focus:ring-0 focus:ring-offset-0 cursor-pointer"
+                  style={{ accentColor: "#06B6D4" }}
                 />
                 <label htmlFor="permission" className="cursor-pointer max-w-[280px] leading-snug">
                   I give permission to contact me at this email address.
@@ -193,7 +193,7 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={status === 'sending'}
-                    className="px-8 py-3.5 rounded bg-red-600 text-white font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:bg-red-700 transition-all duration-300 group whitespace-nowrap shadow-[0_0_20px_rgba(229,9,20,0.6)] hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                    className="px-8 py-3.5 rounded bg-cyan-500 text-white font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:bg-cyan-600 transition-all duration-300 group whitespace-nowrap shadow-[0_0_20px_rgba(6,182,212,0.6)] hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                   >
                     {status === 'sending' ? 'Sending...' : 'Send Message'}
                     <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -206,7 +206,7 @@ const Contact = () => {
                   <p className="text-green-500 text-xs font-mono">Message sent successfully! I'll get back to you soon.</p>
                 )}
                 {status === 'error' && (
-                  <p className="text-red-500 text-xs font-mono">Something went wrong. Please try again or email me directly.</p>
+                  <p className="text-cyan-400 text-xs font-mono">Something went wrong. Please try again or email me directly.</p>
                 )}
               </div>
             </div>

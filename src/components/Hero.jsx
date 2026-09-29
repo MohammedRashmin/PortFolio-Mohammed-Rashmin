@@ -134,7 +134,7 @@ const Hero = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-screen bg-[#050505] overflow-hidden flex flex-col justify-between select-none cursor-none"
+      className="relative w-full h-screen bg-[#050505] overflow-hidden flex flex-col justify-between select-none md:cursor-none"
     >
       <style>{`
         @keyframes marquee {
@@ -153,7 +153,7 @@ const Hero = () => {
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden opacity-10">
           <div className="flex whitespace-nowrap animate-marquee">
             {[...developerRoles, ...developerRoles].map((role, idx) => (
-              <span key={idx} className="text-[14vw] font-black text-red-600 mx-8 uppercase tracking-tighter">
+              <span key={idx} className="text-[14vw] font-black text-cyan-500 mx-8 uppercase tracking-tighter">
                 {role} &bull;
               </span>
             ))}
@@ -161,12 +161,12 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* 2. Direct Mouse Tracking Spotlight Beam (Glows wherever you move) */}
+      {/* 2. Direct Mouse Tracking Spotlight Beam (Glows wherever you move) — desktop only */}
       <div
         ref={spotlightRef}
-        className="absolute top-0 left-0 w-[600px] h-[600px] rounded-full pointer-events-none z-10 opacity-0 blur-[90px] transition-opacity duration-300"
+        className="hidden md:block absolute top-0 left-0 w-[600px] h-[600px] rounded-full pointer-events-none z-10 opacity-0 blur-[90px] transition-opacity duration-300"
         style={{
-          background: 'radial-gradient(circle, rgba(229,9,20,0.35) 0%, rgba(229,9,20,0.1) 40%, transparent 70%)'
+          background: 'radial-gradient(circle, rgba(6,182,212,0.35) 0%, rgba(6,182,212,0.1) 40%, transparent 70%)'
         }}
       ></div>
 
@@ -180,19 +180,19 @@ const Hero = () => {
           <div className="lg:col-span-5 flex flex-col items-start space-y-5 text-left">
             
             <div className="hero-anim-item flex items-center gap-3">
-              <span className="px-2.5 py-0.5 bg-red-600 text-white font-black text-xs rounded tracking-widest shadow-[0_0_20px_rgba(229,9,20,0.8)] animate-pulse">ASSOCIATE SWE</span>
+              <span className="px-2.5 py-0.5 bg-cyan-500 text-white font-black text-xs rounded tracking-widest shadow-[0_0_20px_rgba(6,182,212,0.8)] animate-pulse">ASSOCIATE SWE</span>
               <span className="text-white/80 text-xs font-mono tracking-widest uppercase">Software Engineer & Flutter Developer</span>
             </div>
 
             <h1 className="hero-anim-item text-5xl md:text-7xl font-black tracking-tighter text-white leading-[0.95] drop-shadow-[0_15px_30px_rgba(0,0,0,0.9)]">
               RASHMIN <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-600 to-red-700 drop-shadow-[0_0_35px_rgba(220,38,38,0.5)]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-600 drop-shadow-[0_0_35px_rgba(6,182,212,0.5)]">
                 DEV.ENGINE
               </span>
             </h1>
 
-            <div className="hero-anim-item flex items-center gap-3 text-xs font-mono text-red-400 font-bold">
-              <span className="px-2 py-0.5 bg-red-500/10 border border-red-500/30 rounded text-red-500">Flutter Focused</span>
+            <div className="hero-anim-item flex items-center gap-3 text-xs font-mono text-cyan-300 font-bold">
+              <span className="px-2 py-0.5 bg-cyan-400/10 border border-cyan-400/30 rounded text-cyan-400">Flutter Focused</span>
               <span className="text-white/40">•</span>
               <span>Flutter • Dart • .NET</span>
               <span className="text-white/40">•</span>
@@ -207,7 +207,7 @@ const Hero = () => {
             <div className="hero-anim-item flex items-center gap-4 pt-2">
               <a
                 href="#projects"
-                className="px-8 py-3.5 bg-white text-black font-bold text-xs uppercase tracking-widest rounded hover:bg-red-600 hover:text-white transition-all duration-300 shadow-[0_10px_35px_rgba(255,255,255,0.3)] flex items-center gap-2 hover:scale-105 active:scale-95"
+                className="px-8 py-3.5 bg-white text-black font-bold text-xs uppercase tracking-widest rounded hover:bg-cyan-500 hover:text-white transition-all duration-300 shadow-[0_10px_35px_rgba(255,255,255,0.3)] flex items-center gap-2 hover:scale-105 active:scale-95"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />
@@ -235,10 +235,10 @@ const Hero = () => {
               className="relative group transform-gpu transition-transform duration-100 ease-out will-change-transform"
             >
               {/* Cinematic Red Neon Back Glow */}
-              <div className="absolute -inset-3 bg-gradient-to-r from-red-600/70 via-rose-600/40 to-purple-600/20 rounded-3xl blur-3xl opacity-90 group-hover:opacity-100 animate-pulse duration-1000"></div>
+              <div className="absolute -inset-3 bg-gradient-to-r from-cyan-500/70 via-blue-500/40 to-purple-600/20 rounded-3xl blur-3xl opacity-90 group-hover:opacity-100 animate-pulse duration-1000"></div>
 
               {/* Poster Card with Glossy Sheen */}
-              <div className="relative w-[280px] md:w-[320px] p-3.5 bg-[#141414]/90 backdrop-blur-2xl rounded-2xl border border-red-600/40 shadow-[0_40px_80px_rgba(0,0,0,0.95)] overflow-hidden">
+              <div className="relative w-[280px] md:w-[320px] p-3.5 bg-[#141414]/90 backdrop-blur-2xl rounded-2xl border border-cyan-500/40 shadow-[0_40px_80px_rgba(0,0,0,0.95)] overflow-hidden">
                 
                 {/* Dynamic Specular Glare Layer */}
                 <div 
@@ -247,7 +247,7 @@ const Hero = () => {
                 ></div>
 
                 {/* Netflix Series Tag */}
-                <div className="absolute top-6 left-6 z-30 px-3 py-1 bg-red-600 text-white font-mono text-[10px] font-bold tracking-widest rounded shadow-xl">
+                <div className="absolute top-6 left-6 z-30 px-3 py-1 bg-cyan-500 text-white font-mono text-[10px] font-bold tracking-widest rounded shadow-xl">
                   FEATURED DEV
                 </div>
 
@@ -263,7 +263,7 @@ const Hero = () => {
           {/* Right Side: Technical Specs & Stack */}
           <div className="hero-anim-item lg:col-span-3 flex flex-col items-start lg:items-end space-y-4 text-left lg:text-right">
             <div className="p-5 bg-black/80 backdrop-blur-2xl border border-white/15 rounded-xl shadow-2xl max-w-xs">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold mb-2">Core Stack & Role</h3>
+              <h3 className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-bold mb-2">Core Stack & Role</h3>
               <p className="text-xs text-white/80 leading-relaxed font-light">
                 Associate Software Engineer at Unicorn Connected Apps (CApps), building the OneNex hospitality platform in Flutter.
               </p>
@@ -278,33 +278,33 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* 4. Ultra Pro Max Custom Precision Cursor Suite */}
+      {/* 4. Ultra Pro Max Custom Precision Cursor Suite — desktop only (no real cursor on touch) */}
       <div
         ref={cursorDotRef}
-        className="absolute top-0 left-0 z-50 pointer-events-none w-3 h-3 bg-red-600 rounded-full shadow-[0_0_15px_#E50914]"
+        className="hidden md:block absolute top-0 left-0 z-50 pointer-events-none w-3 h-3 bg-cyan-500 rounded-full shadow-[0_0_15px_#06B6D4]"
       ></div>
 
       <div
         ref={cursorRingRef}
-        className="absolute top-0 left-0 z-50 pointer-events-none w-12 h-12 border border-red-600/60 rounded-full flex items-center justify-center backdrop-blur-[1px]"
+        className="hidden md:block absolute top-0 left-0 z-50 pointer-events-none w-12 h-12 border border-cyan-500/60 rounded-full flex items-center justify-center backdrop-blur-[1px]"
       ></div>
 
       {/* --- NETFLIX-THEMED DEVELOPER NAVBAR --- */}
       <header className="absolute top-0 left-0 z-50 w-full max-w-7xl mx-auto px-6 md:px-12 py-6 flex items-center justify-between pointer-events-auto">
-        <div className="text-2xl font-black text-red-600 tracking-tighter flex items-center gap-2 drop-shadow-[0_2px_15px_rgba(229,9,20,0.9)]">
+        <div className="text-2xl font-black text-cyan-500 tracking-tighter flex items-center gap-2 drop-shadow-[0_2px_15px_rgba(6,182,212,0.9)]">
           RASHMIN<span className="w-1.5 h-1.5 rounded-full bg-white inline-block"></span>
         </div>
         <nav className="hidden md:flex items-center gap-8 text-xs font-mono uppercase tracking-widest text-white/80">
-          <a href="#home" className="hover:text-red-500 transition-colors">Home</a>
-          <a href="#about" className="hover:text-red-500 transition-colors">About</a>
-          <a href="#expertise" className="hover:text-red-500 transition-colors">Expertise</a>
-          <a href="#skills" className="hover:text-red-500 transition-colors">Skills</a>
-          <a href="#projects" className="hover:text-red-500 transition-colors">Projects</a>
-          <a href="#contact" className="hover:text-red-500 transition-colors">Contact</a>
+          <a href="#home" className="hover:text-cyan-400 transition-colors">Home</a>
+          <a href="#about" className="hover:text-cyan-400 transition-colors">About</a>
+          <a href="#expertise" className="hover:text-cyan-400 transition-colors">Expertise</a>
+          <a href="#skills" className="hover:text-cyan-400 transition-colors">Skills</a>
+          <a href="#projects" className="hover:text-cyan-400 transition-colors">Projects</a>
+          <a href="#contact" className="hover:text-cyan-400 transition-colors">Contact</a>
         </nav>
         <a
           href="#hire"
-          className="px-5 py-2 rounded bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_0_20px_rgba(229,9,20,0.6)] hover:scale-105 active:scale-95"
+          className="px-5 py-2 rounded bg-cyan-500 hover:bg-cyan-600 text-white font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_0_20px_rgba(6,182,212,0.6)] hover:scale-105 active:scale-95"
         >
           Hire Me
         </a>

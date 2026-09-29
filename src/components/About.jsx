@@ -63,22 +63,22 @@ const About = () => {
       className="relative w-full min-h-screen bg-[#050505] text-white py-32 px-6 md:px-12 flex flex-col justify-center select-none overflow-hidden"
     >
       {/* Background Cinematic Red Ambient Glows */}
-      <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[160px] pointer-events-none"></div>
-      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-red-900/10 rounded-full blur-[160px] pointer-events-none"></div>
+      <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[160px] pointer-events-none"></div>
+      <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-cyan-900/10 rounded-full blur-[160px] pointer-events-none"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto w-full space-y-16">
         
         {/* Section Header */}
         <div className="flex flex-col items-start space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded bg-black/80 backdrop-blur-2xl border border-red-600/40 text-xs font-mono uppercase tracking-widest text-white shadow-2xl">
-            <span className="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
-            <span className="text-red-500 font-bold">EPISODE 01</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded bg-black/80 backdrop-blur-2xl border border-cyan-500/40 text-xs font-mono uppercase tracking-widest text-white shadow-2xl">
+            <span className="w-2 h-2 rounded-full bg-cyan-500 animate-ping"></span>
+            <span className="text-cyan-400 font-bold">EPISODE 01</span>
             <span className="text-white/40">|</span>
             <span>ABOUT THE ENGINEER</span>
           </div>
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white">
             EPISODE SYNOPSIS <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-rose-600 to-red-700 drop-shadow-[0_0_30px_rgba(229,9,20,0.4)]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-600 drop-shadow-[0_0_30px_rgba(6,182,212,0.4)]">
               ORIGIN & VISION.
             </span>
           </h2>
@@ -90,13 +90,13 @@ const About = () => {
           {/* Card 1: Bio & Academic Core (Span 7) */}
           <div
             ref={addToRefs}
-            className="md:col-span-7 p-8 md:p-12 bg-[#141414]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col justify-between relative group hover:border-red-600/60 transition-all duration-500 overflow-hidden"
+            className="md:col-span-7 p-8 md:p-12 bg-[#141414]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col justify-between relative group hover:border-cyan-500/60 transition-all duration-500 overflow-hidden"
           >
             {/* Real-time mouse hover spotlight highlight */}
             <div 
               className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style={{
-                background: 'radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(229,9,20,0.15), transparent 70%)'
+                background: 'radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(6,182,212,0.15), transparent 70%)'
               }}
             ></div>
 
@@ -105,7 +105,7 @@ const About = () => {
             </div>
             
             <div className="space-y-5 relative z-10">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">Cast & Background</h3>
+              <h3 className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-bold">Cast & Background</h3>
               <p className="text-lg md:text-xl font-medium text-white/90 leading-relaxed">
                 I am <span className="text-white font-bold drop-shadow">Mohammed Rashmin</span>, an Associate Software Engineer at Unicorn Connected Apps (CApps), based in Anuradhapura, Sri Lanka.
               </p>
@@ -124,13 +124,13 @@ const About = () => {
           {/* Card 2: Fellowships & Achievements (Span 5) */}
           <div
             ref={addToRefs}
-            className="md:col-span-5 p-8 md:p-12 bg-[#141414]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col justify-between relative group hover:border-red-600/60 transition-all duration-500 overflow-hidden"
+            className="md:col-span-5 p-8 md:p-12 bg-[#141414]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col justify-between relative group hover:border-cyan-500/60 transition-all duration-500 overflow-hidden"
           >
             {/* Real-time mouse hover spotlight highlight */}
             <div 
               className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style={{
-                background: 'radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(229,9,20,0.15), transparent 70%)'
+                background: 'radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(6,182,212,0.15), transparent 70%)'
               }}
             ></div>
 
@@ -139,18 +139,18 @@ const About = () => {
             </div>
             
             <div className="space-y-5 relative z-10">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">Milestones & Accolades</h3>
+              <h3 className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-bold">Milestones & Accolades</h3>
               <ul className="space-y-3.5 text-sm text-white/80 font-light">
                 <li className="flex items-start gap-2.5">
-                  <span className="text-red-500 font-bold">&#8250;</span>
+                  <span className="text-cyan-400 font-bold">&#8250;</span>
                   <span>Currently building <strong className="text-white">OneNex</strong>, a multi-tenant hotel & restaurant management platform in Flutter.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="text-red-500 font-bold">&#8250;</span>
+                  <span className="text-cyan-400 font-bold">&#8250;</span>
                   <span>Gained R&D exposure at <strong className="text-white">Unicom TIC</strong>, working on applied software research.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="text-red-500 font-bold">&#8250;</span>
+                  <span className="text-cyan-400 font-bold">&#8250;</span>
                   <span>Diploma in <strong className="text-white">Information Technology</strong>, ESOFT Campus (2022 - 2024).</span>
                 </li>
               </ul>
@@ -164,18 +164,18 @@ const About = () => {
           {/* Card 3: Technical Ecosystem (Span 12) */}
           <div
             ref={addToRefs}
-            className="md:col-span-12 p-8 md:p-12 bg-[#141414]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 hover:border-red-600/60 transition-all duration-500 overflow-hidden relative group"
+            className="md:col-span-12 p-8 md:p-12 bg-[#141414]/90 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6 hover:border-cyan-500/60 transition-all duration-500 overflow-hidden relative group"
           >
             {/* Real-time mouse hover spotlight highlight */}
             <div 
               className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
               style={{
-                background: 'radial-gradient(500px circle at var(--mouse-x) var(--mouse-y), rgba(229,9,20,0.15), transparent 70%)'
+                background: 'radial-gradient(500px circle at var(--mouse-x) var(--mouse-y), rgba(6,182,212,0.15), transparent 70%)'
               }}
             ></div>
 
             <div className="space-y-2 text-left relative z-10">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-red-500 font-bold">Production Tech Stack</h3>
+              <h3 className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-bold">Production Tech Stack</h3>
               <p className="text-base md:text-lg font-semibold text-white">Equipped with industry-grade instruments for robust scaling.</p>
             </div>
             
@@ -183,7 +183,7 @@ const About = () => {
               {['Flutter', 'Dart', 'C#', '.NET', 'Angular', 'SQL Server', 'REST APIs'].map((tech, idx) => (
                 <span
                   key={idx}
-                  className="px-4 py-2 rounded bg-white/[0.04] border border-white/10 text-xs font-mono uppercase tracking-wider text-white shadow-inner hover:bg-red-600/20 hover:border-red-600/40 hover:scale-105 transition-all"
+                  className="px-4 py-2 rounded bg-white/[0.04] border border-white/10 text-xs font-mono uppercase tracking-wider text-white shadow-inner hover:bg-cyan-500/20 hover:border-cyan-500/40 hover:scale-105 transition-all"
                 >
                   {tech}
                 </span>

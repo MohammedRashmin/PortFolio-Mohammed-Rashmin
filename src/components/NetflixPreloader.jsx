@@ -40,7 +40,7 @@ const MinimalPreloader = ({ onComplete }) => {
     >
       <div ref={contentRef} className="flex flex-col items-center gap-4">
         {/* Minimal Red Indicator Dot */}
-        <div className="w-2.5 h-2.5 rounded-full bg-red-600 animate-ping"></div>
+        <div className="w-2.5 h-2.5 rounded-full bg-cyan-500 animate-ping"></div>
 
         {/* Minimal Typography */}
         <h1 
