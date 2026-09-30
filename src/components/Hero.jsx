@@ -303,7 +303,7 @@ const Hero = () => {
           <a href="#contact" className="hover:text-cyan-400 transition-colors">Contact</a>
         </nav>
         <a
-          href="#hire"
+          href="mailto:mrrasmi01@gmail.com?subject=Job%20Opportunity%20-%20Let's%20Connect&body=Hi%20Rashmin,%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20I'm%20interested%20in%20discussing%20a%20potential%20opportunity%20with%20you.%0D%0A%0D%0ARole%2FProject%3A%20%0D%0ACompany%3A%20%0D%0ADetails%3A%20%0D%0A%0D%0ALooking%20forward%20to%20hearing%20from%20you.%0D%0A%0D%0ABest%20regards,%0D%0A"
           className="px-5 py-2 rounded bg-cyan-500 hover:bg-cyan-600 text-white font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_0_20px_rgba(6,182,212,0.6)] hover:scale-105 active:scale-95"
         >
           Hire Me
