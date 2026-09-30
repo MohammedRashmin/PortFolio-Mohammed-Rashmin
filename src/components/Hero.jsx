@@ -227,6 +227,7 @@ const Hero = () => {
               </a>
             </div>
           </div>
+          
 
           {/* Center: Interactive 3D Holographic Tilt Developer Poster Frame */}
           <div className="lg:col-span-4 flex justify-center perspective-[1200px]">
