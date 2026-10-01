@@ -185,7 +185,7 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 items-center gap-8 my-auto">
           
           {/* Left Side: Developer Story & Description */}
-          <div className="lg:col-span-5 flex flex-col items-start space-y-5 text-left">
+          <div className="lg:col-span-5 lg:order-2 flex flex-col items-start space-y-5 text-left">
             
             <div className="hero-anim-item flex items-center gap-3">
               <span className="px-2.5 py-0.5 bg-cyan-500 text-white font-black text-xs rounded tracking-widest shadow-[0_0_20px_rgba(6,182,212,0.8)] animate-pulse">ASSOCIATE SWE</span>
@@ -237,8 +237,8 @@ const Hero = () => {
           </div>
           
 
-          {/* Center: Interactive 3D Holographic Tilt Developer Poster Frame */}
-          <div className="lg:col-span-4 flex justify-center perspective-[1200px]">
+          {/* Photo: Interactive 3D Holographic Tilt Developer Poster Frame */}
+          <div className="lg:col-span-4 lg:order-1 flex justify-center perspective-[1200px]">
             <div 
               ref={cardRef}
               className="relative group transform-gpu transition-transform duration-100 ease-out will-change-transform"
@@ -270,7 +270,7 @@ const Hero = () => {
           </div>
 
           {/* Right Side: Technical Specs & Stack */}
-          <div className="hero-anim-item lg:col-span-3 flex flex-col items-start lg:items-end space-y-4 text-left lg:text-right">
+          <div className="hero-anim-item lg:col-span-3 lg:order-3 flex flex-col items-start lg:items-end space-y-4 text-left lg:text-right">
             <div className="p-5 bg-black/80 backdrop-blur-2xl border border-white/15 rounded-xl shadow-2xl max-w-xs">
               <h3 className="text-xs font-mono uppercase tracking-widest text-cyan-400 font-bold mb-2">Core Stack & Role</h3>
               <p className="text-xs text-white/80 leading-relaxed font-light">
