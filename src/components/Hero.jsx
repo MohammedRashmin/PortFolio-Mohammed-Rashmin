@@ -246,11 +246,11 @@ const Hero = () => {
               {/* Cinematic Red Neon Back Glow */}
               <div className="absolute -inset-3 bg-gradient-to-r from-cyan-500/70 via-blue-500/40 to-purple-600/20 rounded-3xl blur-3xl opacity-90 group-hover:opacity-100 animate-pulse duration-1000"></div>
 
-              {/* Poster Card with Glossy Sheen */}
-              <div className="relative w-[280px] md:w-[320px] p-3.5 bg-[#141414]/90 backdrop-blur-2xl rounded-2xl border border-cyan-500/40 shadow-[0_40px_80px_rgba(0,0,0,0.95)] overflow-hidden">
-                
+              {/* Poster — image only, no card frame */}
+              <div className="relative w-[280px] md:w-[320px] rounded-2xl overflow-hidden">
+
                 {/* Dynamic Specular Glare Layer */}
-                <div 
+                <div
                   ref={glareRef}
                   className="absolute inset-[-50%] w-[200%] h-[200%] bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none transform-gpu z-40"
                 ></div>
@@ -263,7 +263,7 @@ const Hero = () => {
                 <img
                   src={pictureImg}
                   alt="Developer Portrait"
-                  className="w-full h-[330px] md:h-[390px] object-cover rounded-xl filter contrast-125 brightness-105 group-hover:scale-[1.02] transition-transform duration-500"
+                  className="w-full h-[330px] md:h-[390px] object-cover rounded-2xl filter contrast-125 brightness-105 group-hover:scale-[1.02] transition-transform duration-500"
                 />
               </div>
             </div>

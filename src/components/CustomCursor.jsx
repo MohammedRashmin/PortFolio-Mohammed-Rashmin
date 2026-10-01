@@ -15,7 +15,7 @@ const CustomCursor = () => {
 
     if (!cursor || !scaleEl || !glow) return;
 
-    const SIZE = 40;
+    const SIZE = 64;
 
     gsap.set(cursor, { opacity: 0 });
     gsap.set(scaleEl, { scale: 1, transformOrigin: "50% 50%" });
@@ -97,11 +97,17 @@ const CustomCursor = () => {
       {/* Global Custom Cursor — glowing orb, no ring */}
       <div
         ref={cursorRef}
-        className="hidden md:block fixed top-0 left-0 z-[9999] pointer-events-none w-10 h-10 opacity-0"
+        className="hidden md:block fixed top-0 left-0 z-[9999] pointer-events-none w-16 h-16 opacity-0"
       >
         <div ref={scaleRef} className="relative w-full h-full flex items-center justify-center">
-          <div ref={glowRef} className="absolute w-9 h-9 rounded-full bg-cyan-400 blur-md opacity-70"></div>
-          <div className="relative w-2.5 h-2.5 rounded-full bg-cyan-200 shadow-[0_0_14px_4px_rgba(6,182,212,0.95)]"></div>
+          <div
+            ref={glowRef}
+            className="absolute w-14 h-14 rounded-full"
+            style={{
+              background: 'radial-gradient(circle, rgba(6,182,212,0.95) 0%, rgba(6,182,212,0.45) 35%, rgba(6,182,212,0.12) 60%, transparent 75%)'
+            }}
+          ></div>
+          <div className="relative w-2 h-2 rounded-full bg-cyan-100 shadow-[0_0_14px_4px_rgba(6,182,212,0.95)]"></div>
         </div>
       </div>
     </>
