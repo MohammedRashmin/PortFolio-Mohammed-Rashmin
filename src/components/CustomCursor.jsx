@@ -2,60 +2,84 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 
 const CustomCursor = () => {
-  const dotRef = useRef(null);
-  const ringRef = useRef(null);
+  const cursorRef = useRef(null);
+  const scaleRef = useRef(null);
+  const glowRef = useRef(null);
   const spotlightRef = useRef(null);
 
   useEffect(() => {
-    const dot = dotRef.current;
-    const ring = ringRef.current;
+    const cursor = cursorRef.current;
+    const scaleEl = scaleRef.current;
+    const glow = glowRef.current;
     const spotlight = spotlightRef.current;
 
-    if (!dot || !ring) return;
+    if (!cursor || !scaleEl || !glow) return;
 
-    gsap.set([dot, ring], { scale: 0.5, opacity: 0, transformOrigin: "50% 50%" });
+    const SIZE = 40;
 
-    const xToDot = gsap.quickTo(dot, "x", { duration: 0.05, ease: "power2.out" });
-    const yToDot = gsap.quickTo(dot, "y", { duration: 0.05, ease: "power2.out" });
-    
-    const xToRing = gsap.quickTo(ring, "x", { duration: 0.15, ease: "power3.out" });
-    const yToRing = gsap.quickTo(ring, "y", { duration: 0.15, ease: "power3.out" });
+    gsap.set(cursor, { opacity: 0 });
+    gsap.set(scaleEl, { scale: 1, transformOrigin: "50% 50%" });
+
+    const xTo = gsap.quickTo(cursor, "x", { duration: 0.08, ease: "power2.out" });
+    const yTo = gsap.quickTo(cursor, "y", { duration: 0.08, ease: "power2.out" });
 
     const handleMouseMove = (e) => {
-      const x = e.clientX;
-      const y = e.clientY;
-
-      const dotSize = 12;
-      const ringSize = 48;
-
-      xToDot(x - dotSize / 2);
-      yToDot(y - dotSize / 2);
-      xToRing(x - ringSize / 2);
-      yToRing(y - ringSize / 2);
+      xTo(e.clientX - SIZE / 2);
+      yTo(e.clientY - SIZE / 2);
 
       if (spotlight) {
-        spotlight.style.transform = `translate3d(${x - 350}px, ${y - 350}px, 0)`;
+        spotlight.style.transform = `translate3d(${e.clientX - 350}px, ${e.clientY - 350}px, 0)`;
       }
     };
 
     const handleMouseEnter = () => {
-      gsap.to([dot, ring], { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" });
+      gsap.to(cursor, { opacity: 1, duration: 0.3, ease: "power2.out" });
       if (spotlight) gsap.to(spotlight, { opacity: 1, duration: 0.3 });
     };
 
     const handleMouseLeave = () => {
-      gsap.to([dot, ring], { opacity: 0, scale: 0.5, duration: 0.3, ease: "power2.inOut" });
+      gsap.to(cursor, { opacity: 0, duration: 0.3, ease: "power2.inOut" });
       if (spotlight) gsap.to(spotlight, { opacity: 0, duration: 0.3 });
+    };
+
+    // Gentle idle breathing pulse on the glow halo
+    const breathe = gsap.to(glow, {
+      scale: 1.35,
+      opacity: 0.5,
+      duration: 1.6,
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1
+    });
+
+    // Bigger, brighter glow when hovering anything clickable
+    const handlePointerOver = (e) => {
+      const target = e.target.closest('a, button, [role="button"], input, textarea, .group');
+      if (!target) return;
+      gsap.to(scaleEl, { scale: 1.9, duration: 0.35, ease: "power2.out" });
+      gsap.to(glow, { filter: "brightness(1.7)", duration: 0.35, ease: "power2.out" });
+    };
+
+    const handlePointerOut = (e) => {
+      const target = e.target.closest('a, button, [role="button"], input, textarea, .group');
+      if (!target) return;
+      gsap.to(scaleEl, { scale: 1, duration: 0.35, ease: "power2.out" });
+      gsap.to(glow, { filter: "brightness(1)", duration: 0.35, ease: "power2.out" });
     };
 
     window.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseenter", handleMouseEnter);
     document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("mouseover", handlePointerOver);
+    document.addEventListener("mouseout", handlePointerOut);
 
     return () => {
+      breathe.kill();
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseenter", handleMouseEnter);
       document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("mouseover", handlePointerOver);
+      document.removeEventListener("mouseout", handlePointerOut);
     };
   }, []);
 
@@ -70,17 +94,16 @@ const CustomCursor = () => {
         }}
       ></div>
 
-      {/* Global Custom Cursor Dot */}
+      {/* Global Custom Cursor — glowing orb, no ring */}
       <div
-        ref={dotRef}
-        className="hidden md:block fixed top-0 left-0 z-[9999] pointer-events-none w-3 h-3 bg-cyan-500 rounded-full shadow-[0_0_15px_#06B6D4]"
-      ></div>
-
-      {/* Global Custom Cursor Ring */}
-      <div
-        ref={ringRef}
-        className="hidden md:block fixed top-0 left-0 z-[9999] pointer-events-none w-12 h-12 border border-cyan-500/60 rounded-full flex items-center justify-center backdrop-blur-[1px]"
-      ></div>
+        ref={cursorRef}
+        className="hidden md:block fixed top-0 left-0 z-[9999] pointer-events-none w-10 h-10 opacity-0"
+      >
+        <div ref={scaleRef} className="relative w-full h-full flex items-center justify-center">
+          <div ref={glowRef} className="absolute w-9 h-9 rounded-full bg-cyan-400 blur-md opacity-70"></div>
+          <div className="relative w-2.5 h-2.5 rounded-full bg-cyan-200 shadow-[0_0_14px_4px_rgba(6,182,212,0.95)]"></div>
+        </div>
+      </div>
     </>
   );
 };

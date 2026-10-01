@@ -172,7 +172,7 @@ const Skills = () => {
     <section 
       id="skills"
       ref={sectionRef} 
-      className="relative w-full h-screen bg-[#0b0b0b] text-white overflow-hidden flex items-center justify-center md:[perspective:1000px] select-none"
+      className="relative w-full min-h-fit py-16 md:h-screen md:py-0 bg-[#0b0b0b] text-white overflow-hidden flex items-center justify-center md:[perspective:1000px] select-none"
     >
       {/* Dynamic Netflix Dark Background Vignettes */}
       {skillCategories.map((_, i) => (

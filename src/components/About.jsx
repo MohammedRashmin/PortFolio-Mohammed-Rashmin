@@ -31,7 +31,9 @@ const About = () => {
       }
     );
 
-    // --- Interactive Magnetic Mouse Spotlight per Bento Card ---
+    // --- Interactive Magnetic Mouse Spotlight per Bento Card (desktop-with-a-real-cursor only) ---
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
     const cards = cardRefs.current;
     const handleMouseMove = (e, card) => {
       const rect = card.getBoundingClientRect();
@@ -60,13 +62,13 @@ const About = () => {
     <section
       id="about"
       ref={sectionRef}
-      className="relative w-full min-h-screen bg-[#050505] text-white py-32 px-6 md:px-12 flex flex-col justify-center select-none overflow-hidden"
+      className="relative w-full min-h-screen bg-[#050505] text-white py-20 md:py-32 px-6 md:px-12 flex flex-col justify-center select-none overflow-hidden"
     >
       {/* Background Cinematic Red Ambient Glows */}
       <div className="absolute top-1/4 left-10 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[160px] pointer-events-none"></div>
       <div className="absolute bottom-10 right-10 w-[500px] h-[500px] bg-cyan-900/10 rounded-full blur-[160px] pointer-events-none"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full space-y-16">
+      <div className="relative z-10 max-w-7xl mx-auto w-full space-y-10 md:space-y-16">
         
         {/* Section Header */}
         <div className="flex flex-col items-start space-y-4">
@@ -100,7 +102,7 @@ const About = () => {
               }}
             ></div>
 
-            <div className="absolute top-0 right-0 p-8 text-white/5 font-mono text-7xl font-black pointer-events-none">
+            <div className="absolute top-0 right-0 p-5 md:p-8 text-white/5 font-mono text-4xl md:text-7xl font-black pointer-events-none">
               01
             </div>
             
@@ -134,7 +136,7 @@ const About = () => {
               }}
             ></div>
 
-            <div className="absolute top-0 right-0 p-8 text-white/5 font-mono text-7xl font-black pointer-events-none">
+            <div className="absolute top-0 right-0 p-5 md:p-8 text-white/5 font-mono text-4xl md:text-7xl font-black pointer-events-none">
               02
             </div>
             

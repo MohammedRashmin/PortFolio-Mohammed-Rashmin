@@ -45,7 +45,15 @@ const Hero = () => {
       "-=0.9"
     );
 
-    // --- MOUSE PHYSICS & SPOTLIGHT TRACKING ---
+    // --- MOUSE PHYSICS & SPOTLIGHT TRACKING (desktop-with-a-real-cursor only) ---
+    // Excludes any device with touch capability too, even if it also reports a fine pointer
+    // (2-in-1 laptops, some tablets) — a tap there still fires a synthetic mousemove/mouseenter
+    // at the tap location, which would otherwise stick the card mid-tilt with no mouseleave to reset it.
+    const hasFinePointer =
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+      navigator.maxTouchPoints === 0;
+    if (!hasFinePointer) return;
+
     gsap.set([cursorDotRef.current, cursorRingRef.current], {
       scale: 0.5,
       opacity: 0,
@@ -54,7 +62,7 @@ const Hero = () => {
 
     const xToDot = gsap.quickTo(cursorDotRef.current, "x", { duration: 0.05, ease: "power2.out" });
     const yToDot = gsap.quickTo(cursorDotRef.current, "y", { duration: 0.05, ease: "power2.out" });
-    
+
     const xToRing = gsap.quickTo(cursorRingRef.current, "x", { duration: 0.15, ease: "power3.out" });
     const yToRing = gsap.quickTo(cursorRingRef.current, "y", { duration: 0.15, ease: "power3.out" });
 
@@ -134,7 +142,7 @@ const Hero = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-screen bg-[#050505] overflow-hidden flex flex-col justify-between select-none md:cursor-none"
+      className="relative w-full min-h-[100svh] md:h-screen bg-[#050505] overflow-hidden flex flex-col justify-between select-none md:cursor-none"
     >
       <style>{`
         @keyframes marquee {
@@ -148,9 +156,9 @@ const Hero = () => {
         }
       `}</style>
 
-      {/* 1. Cinematic Background Gradient & Marquee */}
+      {/* 1. Cinematic Background Gradient & Marquee (marquee is a desktop-only flourish — too busy on small screens) */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-black/90 to-[#050505] z-0">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden opacity-10">
+        <div className="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none select-none overflow-hidden opacity-10">
           <div className="flex whitespace-nowrap animate-marquee">
             {[...developerRoles, ...developerRoles].map((role, idx) => (
               <span key={idx} className="text-[14vw] font-black text-cyan-500 mx-8 uppercase tracking-tighter">
@@ -191,11 +199,11 @@ const Hero = () => {
               </span>
             </h1>
 
-            <div className="hero-anim-item flex items-center gap-3 text-xs font-mono text-cyan-300 font-bold">
+            <div className="hero-anim-item flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-mono text-cyan-300 font-bold">
               <span className="px-2 py-0.5 bg-cyan-400/10 border border-cyan-400/30 rounded text-cyan-400">Flutter Focused</span>
-              <span className="text-white/40">•</span>
+              <span className="text-white/40 hidden sm:inline">•</span>
               <span>Flutter • Dart • .NET</span>
-              <span className="text-white/40">•</span>
+              <span className="text-white/40 hidden sm:inline">•</span>
               <span className="text-white/70">REST APIs & AI</span>
             </div>
 
@@ -286,7 +294,7 @@ const Hero = () => {
       ></div>
 
       <div
-        ref={cursorRingRef}
+        ref={cursorRingRef}next t
         className="hidden md:block absolute top-0 left-0 z-50 pointer-events-none w-12 h-12 border border-cyan-500/60 rounded-full flex items-center justify-center backdrop-blur-[1px]"
       ></div>
 

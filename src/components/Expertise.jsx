@@ -37,51 +37,84 @@ const expertiseData = [
 
 const Expertise = () => {
   const containerRef = useRef(null);
+  const trackRef = useRef(null);
+  const trunkFillRef = useRef(null);
+  const nodeRefs = useRef([]);
   const cardRefs = useRef([]);
 
   useEffect(() => {
-    const cards = cardRefs.current;
-    if (!cards.length) return;
+    const track = trackRef.current;
+    const trunkFill = trunkFillRef.current;
+    if (!track || !trunkFill) return;
 
-    cards.forEach((card, index) => {
-      if (index === cards.length - 1) return; // Keep the top-most card fully focused
-
-      gsap.to(card, {
-        scale: 0.92 - index * 0.025,
-        y: -15 - index * 8,
-        filter: "blur(6px)",
-        opacity: 0.4,
-        scrollTrigger: {
-          trigger: card,
-          start: `top ${90 + index * 20}px`,
-          end: "bottom top",
-          scrub: true,
+    const ctx = gsap.context(() => {
+      // Trunk draws itself downward as the visitor scrolls through the timeline
+      gsap.fromTo(
+        trunkFill,
+        { scaleY: 0 },
+        {
+          scaleY: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: track,
+            start: "top 65%",
+            end: "bottom 55%",
+            scrub: true,
+          }
         }
+      );
+
+      // Each node lights up once the trunk reaches it
+      nodeRefs.current.forEach((node) => {
+        if (!node) return;
+        ScrollTrigger.create({
+          trigger: node,
+          start: "top 68%",
+          toggleClass: { targets: node, className: "node-active" },
+        });
       });
-    });
 
-    // Magnetic mouse highlight per card
-    const handleMouseMove = (e, card) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      card.style.setProperty('--mouse-x', `${x}px`);
-      card.style.setProperty('--mouse-y', `${y}px`);
-    };
+      // Cards fade/rise into place as they enter view
+      cardRefs.current.forEach((card) => {
+        if (!card) return;
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 40, scale: 0.96 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
+            }
+          }
+        );
+      });
 
-    cards.forEach((card) => {
-      if (!card) return;
-      const listener = (e) => handleMouseMove(e, card);
-      card.addEventListener('mousemove', listener);
-      return () => card.removeEventListener('mousemove', listener);
-    });
+      // Magnetic mouse highlight per card
+      cardRefs.current.forEach((card) => {
+        if (!card) return;
+        const handleMouseMove = (e) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+          card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        };
+        card.addEventListener('mousemove', handleMouseMove);
+      });
+    }, containerRef);
 
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
+    return () => ctx.revert();
   }, []);
 
-  const addToRefs = (el) => {
+  const addNodeRef = (el, i) => {
+    nodeRefs.current[i] = el;
+  };
+
+  const addCardRef = (el) => {
     if (el && !cardRefs.current.includes(el)) {
       cardRefs.current.push(el);
     }
@@ -91,13 +124,38 @@ const Expertise = () => {
     <section
       id="expertise"
       ref={containerRef}
-      className="relative w-full bg-[#050505] text-white py-20 px-6 md:px-12 select-none overflow-hidden"
+      className="relative w-full bg-[#050505] text-white py-20 md:py-28 px-6 md:px-12 select-none overflow-hidden"
     >
-      {/* Cinematic Red Ambient Glow */}
+      <style>{`
+        @keyframes electric-flow {
+          0% { background-position: 0 -120%; }
+          100% { background-position: 0 220%; }
+        }
+        .trunk-fill {
+          background: linear-gradient(180deg, #06B6D4, #3B82F6);
+          box-shadow: 0 0 14px 1px rgba(6,182,212,0.55);
+        }
+        .trunk-spark {
+          background: linear-gradient(180deg, transparent, rgba(255,255,255,0.95) 45%, #06B6D4 55%, transparent);
+          background-size: 100% 60%;
+          animation: electric-flow 1.3s linear infinite;
+          mix-blend-mode: screen;
+        }
+        .node-dot {
+          transition: background-color 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .node-active .node-dot {
+          background-color: #06B6D4;
+          border-color: #06B6D4;
+          box-shadow: 0 0 16px 3px rgba(6,182,212,0.85);
+        }
+      `}</style>
+
+      {/* Cinematic Ambient Glow */}
       <div className="absolute top-1/3 left-1/4 w-[450px] h-[450px] bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none"></div>
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full space-y-12">
-        
+      <div className="relative z-10 max-w-6xl mx-auto w-full space-y-16 md:space-y-20">
+
         {/* Compact Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-2">
           <div className="space-y-3 max-w-xl">
@@ -119,57 +177,89 @@ const Expertise = () => {
           </p>
         </div>
 
-        {/* Compact 1-on-1 Gradient Stacking Container */}
-        <div className="relative flex flex-col gap-8 pb-20">
-          {expertiseData.map((item, index) => (
-            <div
-              key={index}
-              ref={addToRefs}
-              className={`sticky w-full p-6 md:p-8 rounded-2xl bg-gradient-to-br ${item.gradient} backdrop-blur-2xl border border-white/10 shadow-[0_20px_45px_rgba(0,0,0,0.85)] flex flex-col justify-between min-h-[230px] md:min-h-[250px] transform-gpu transition-all overflow-hidden group hover:border-cyan-500/50`}
-              style={{
-                zIndex: index + 1,
-                top: `${95 + index * 16}px`
-              }}
-            >
-              {/* Dynamic Mouse Spotlight Highlight */}
-              <div 
-                className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
-                style={{
-                  background: 'radial-gradient(350px circle at var(--mouse-x) var(--mouse-y), rgba(6,182,212,0.18), transparent 70%)'
-                }}
-              ></div>
+        {/* Centered Tree Timeline */}
+        <div ref={trackRef} className="relative pb-8">
 
-              {/* Crimson Accent Stripe */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-[2px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent z-10"></div>
+          {/* Trunk track (dim base line) — always dead-center, at every breakpoint */}
+          <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[3px] md:w-1 h-full bg-white/10 rounded-full"></div>
 
-              {/* Card Header Top */}
-              <div className="flex items-center justify-between w-full mb-4 relative z-10">
-                <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-cyan-400 px-2.5 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/25">
-                  {item.tag}
-                </span>
-                <span className="text-2xl md:text-3xl font-mono font-black text-white/20">
-                  {item.number}
-                </span>
-              </div>
+          {/* Trunk fill (grows on scroll) with traveling electric spark */}
+          <div
+            ref={trunkFillRef}
+            className="absolute left-1/2 top-0 -translate-x-1/2 w-[3px] md:w-1 h-full rounded-full origin-top overflow-hidden trunk-fill"
+          >
+            <div className="absolute inset-0 trunk-spark"></div>
+          </div>
 
-              {/* Card Body */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center my-auto relative z-10">
-                <div className="lg:col-span-5">
-                  <h3 className="text-2xl md:text-3xl font-black text-white tracking-tight leading-snug group-hover:text-cyan-400 transition-colors duration-300">
-                    {item.title}
-                  </h3>
+          <div className="flex flex-col gap-6 sm:gap-8 md:gap-8">
+            {expertiseData.map((item, index) => {
+              const reversed = index % 2 === 1;
+              return (
+                <div
+                  key={index}
+                  className="relative flex items-center gap-2 sm:gap-4 md:gap-8"
+                >
+                  {/* Card slot — alternates sides at every breakpoint */}
+                  <div
+                    className={`w-[46%] ${reversed ? 'order-3' : 'order-1'}`}
+                  >
+                    <div
+                      ref={addCardRef}
+                      className={`group relative p-3 sm:p-5 md:p-8 rounded-xl md:rounded-2xl bg-gradient-to-br ${item.gradient} backdrop-blur-2xl border border-white/10 shadow-[0_20px_45px_rgba(0,0,0,0.85)] hover:border-cyan-500/50 transition-all overflow-hidden`}
+                    >
+                      {/* Dynamic Mouse Spotlight Highlight */}
+                      <div
+                        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
+                        style={{
+                          background: 'radial-gradient(350px circle at var(--mouse-x) var(--mouse-y), rgba(6,182,212,0.18), transparent 70%)'
+                        }}
+                      ></div>
+
+                      {/* Accent Stripe */}
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 md:w-28 h-[2px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent z-10"></div>
+
+                      {/* Card Header Top */}
+                      <div className="flex flex-wrap items-center justify-between gap-1 w-full mb-2 md:mb-4 relative z-10">
+                        <span className="text-[8px] sm:text-[10px] font-mono font-bold uppercase tracking-widest text-cyan-400 px-1.5 sm:px-2.5 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/25">
+                          {item.tag}
+                        </span>
+                        <span className="text-base sm:text-2xl md:text-3xl font-mono font-black text-white/20">
+                          {item.number}
+                        </span>
+                      </div>
+
+                      {/* Card Body */}
+                      <div className="relative z-10 space-y-1 md:space-y-2">
+                        <h3 className="text-sm sm:text-xl md:text-2xl font-black text-white tracking-tight leading-snug group-hover:text-cyan-400 transition-colors duration-300">
+                          {item.title}
+                        </h3>
+                        <p className="hidden sm:block text-xs md:text-sm text-white/70 font-light leading-relaxed">
+                          {item.text}
+                        </p>
+                      </div>
+
+                      {/* Corner Dot */}
+                      <div className="absolute bottom-2 right-2 md:bottom-4 md:right-4 w-1.5 h-1.5 rounded-full bg-cyan-500 group-hover:shadow-[0_0_10px_#06B6D4] z-10 transition-all"></div>
+                    </div>
+                  </div>
+
+                  {/* Node column (sits where the trunk passes through) */}
+                  <div
+                    ref={(el) => addNodeRef(el, index)}
+                    className="relative z-10 order-2 flex-shrink-0 w-6 sm:w-10 md:w-16 flex items-center justify-center"
+                  >
+                    <div className="node-dot w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[#0b0b0b] border-2 border-white/20"></div>
+                  </div>
+
+                  {/* Opposite-side spacer — always present so the trunk stays centered */}
+                  <div
+                    className={`w-[46%] ${reversed ? 'order-1' : 'order-3'}`}
+                  ></div>
+
                 </div>
-                <div className="lg:col-span-7">
-                  <p className="text-xs md:text-sm text-white/70 font-light leading-relaxed">
-                    {item.text}
-                  </p>
-                </div>
-              </div>
-
-              {/* Subtle Red Corner Dot */}
-              <div className="absolute bottom-4 right-4 w-1.5 h-1.5 rounded-full bg-cyan-500 group-hover:shadow-[0_0_10px_#06B6D4] z-10 transition-all"></div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </div>
 
       </div>
