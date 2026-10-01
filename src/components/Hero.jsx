@@ -12,10 +12,10 @@ const Hero = () => {
   const contentRef = useRef(null);
 
   const developerRoles = [
-    'FEATURE FILM // FLUTTER MOBILE ENGINEER',
-    'ORIGINAL SERIES // FULL-STACK DEVELOPER',
-    'BLOCKBUSTER // AI-POWERED APPLICATIONS',
-    'ACCLAIMED // SOFTWARE ARCHITECT'
+    'FLUTTER MOBILE ENGINEER',
+    'FULL-STACK DEVELOPER',
+    'AI-POWERED APPLICATIONS',
+    'SOFTWARE ARCHITECT'
   ];
 
   useEffect(() => {

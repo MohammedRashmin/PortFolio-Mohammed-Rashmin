@@ -245,13 +245,6 @@ const Projects = () => {
   return (
     <section id="projects" ref={containerRef} className="bg-[#0b0b0b] min-h-fit md:min-h-[170vh] relative font-sans overflow-x-clip text-white w-full flex items-center justify-center py-8 md:py-40 select-none">
       
-      {/* Background Netflix Cinematic Title Watermark */}
-      <div className="absolute top-10 left-0 w-full flex items-start justify-center pointer-events-none z-0">
-        <h1 className="text-[14vw] sm:text-[17vw] md:text-[20vw] font-black text-white/[0.03] tracking-tighter leading-none whitespace-nowrap uppercase">
-          ORIGINALS
-        </h1>
-      </div>
-
       {/* Ambient Crimson Glow behind folder */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[55vw] h-[55vw] bg-cyan-500/15 rounded-full blur-[160px] pointer-events-none z-0" />
 
